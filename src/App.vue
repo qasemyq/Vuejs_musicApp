@@ -5,15 +5,10 @@
     </header>
     <main>
       <section class="player">
-        <!-- har chi tu payin tu gesmate data change beshe inja ham dide mishe  -->
-        <!-- inja bayd - bezaram -->
         <h2 class="song-title ">{{current.title}} - <span>{{current.singer}}</span></h2>
-        <!-- inja mikham bara app control bezaram -->
         <div class="controls">
           <button class="prev" @click="prev">Prev</button>
-          <!--inja migam if not isplaying-->
           <button class="play" v-if="!isPlaying" @click="play">Play</button>
-          <!-- inja ham v-else mizaram ke bala bara play v-ifesho gozashtam  -->
           <button class="pause" v-else @click="pause">Pause</button>
           <button class="next" @click="next">Next</button>
         </div>
@@ -35,30 +30,24 @@ export default {
      current: {
      },
      index: 0, 
-     // ye motagayer misazam bar bara isplaying va false mizaram 
      isPlaying: false,
      songs: [
        {
          title: "what you gonna do",
          singer: "Jastin",
-         // injuri ba require mitunam song haye ke tu asset hast ro be dast biyaram 
          src: require('./assets/JustinBieber.mp3')
        },
        {
          title: "JH",
          singer: "Gmizi",
-         // injuri ba require mitunam song haye ke tu asset hast ro be dast biyaram 
          src: require('./assets/111.mp3')
        }
      ],
-     // ba in mitunam audio ro dakhele appemun handel konam 
      player: new Audio()
     }
   },
-  // inja mikham biyam va function hamuno benevisam 
   methods: {
     play(song) {
-      // age typeofe song.src mosavi nabud ba undefined  
       if(typeof song.src != "undefined") {
         this.current = song;
         this.player.src = this.current.src;
@@ -87,13 +76,9 @@ export default {
       this.play(this.current)
     },
   },
-  // be mahze inke app sakhte shod inro ejra mikonim 
   created (){
-    // this inja data hast, index ro bala tarif mikonam va 0 ro behesh midam 
     this.current = this.songs[this.index];
     this.player.src = this.current.src;
-    // inja vagti ino minevisam play mikone 
-    //this.player.play();
   }
   
 }
